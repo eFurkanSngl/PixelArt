@@ -6,6 +6,8 @@ public class NewBehaviourScript : MonoBehaviour
 {
     private Rigidbody2D _rb;
     private Vector2 _movement;
+    private float _InputHorz;
+    private float _InputVert;
     [SerializeField]private float _speed;
     [SerializeField] Animator _anim;
 
@@ -24,6 +26,10 @@ public class NewBehaviourScript : MonoBehaviour
         // Rb pozisyonuna ekleyerek yapýyoruz
 
 
+        //_InputHorz = Input.GetAxisRaw("Horizontal");
+        //_InputVert = Input.GetAxisRaw("Vertical");
+        //_movement= new Vector2(_InputHorz,_InputVert);
+
         if (Input.GetButtonDown("Fire1")) // Mouse Button 0 yani sol týk
         {
             _anim.SetTrigger("isAttack");
@@ -35,6 +41,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         #region Movement
         _rb.MovePosition(_rb.position + _movement * _speed * Time.deltaTime);
+
+
         if(_movement.x < 0 && _facingRight)
         {
              Flip();
